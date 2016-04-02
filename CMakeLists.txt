@@ -25,7 +25,7 @@ set(SOURCE_FILES main.c
                     src/server/server.c
                     src/webProvider/webProvider.c
 
-        tests/test_suite.c
-        tests/webProvider_test/webProvider_test.c)
+                    tests/test_suite.c
+                    tests/webProvider_test/webProvider_test.c)
 add_executable(iCompile ${SOURCE_FILES})
 target_link_libraries (iCompile commons)

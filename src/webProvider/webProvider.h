@@ -11,8 +11,10 @@
 #include<sys/mman.h>
 #include<fcntl.h>
 #include <commons/log.h>
+#include <commons/string.h>
 
 void provideStaticContent(int socket, t_provider provider);
 void provideFileContent(int socket, t_provider provider);
+void provideFileContentAware(int socket, t_provider provider);
 
 #endif //ICOMPILE_WEBPROVIDER_H

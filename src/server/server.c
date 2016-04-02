@@ -16,7 +16,7 @@ void provide(int socket, void* data, size_t size){
 }
 
 void serve(char *port, void(*run)(int, t_provider)){
-    int sockfd, new_fd;  // listen on sock_fd, new connection on new_fd
+    int sockfd = 0, new_fd;  // listen on sock_fd, new connection on new_fd
     struct addrinfo hints, *servinfo, *p;
     struct sockaddr_storage their_addr; // connector's address information
     socklen_t sin_size;
