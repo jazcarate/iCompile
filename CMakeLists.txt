@@ -15,7 +15,7 @@ list(REMOVE_DUPLICATES Foo_INCLUDE_DIRS)
 
 include_directories(${Foo_INCLUDE_DIRS})
 
-add_library( commons SHARED IMPORTED )
 
-set(SOURCE_FILES src/main.c src/tests/test_suite.c src/server/server.c)
+set(SOURCE_FILES src/main.c src/tests/test_suite.c src/server/server.c src/webProvider/webProvider.c src/webProvider/webProvider.h src/tests/webProvider/webProvider.c)
 add_executable(iCompile ${SOURCE_FILES})
+target_link_libraries (iCompile commons)

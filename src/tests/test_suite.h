@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include "../webProvider/webProvider.h"
 
 int run_test_suite();
 
