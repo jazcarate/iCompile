@@ -1,7 +1,7 @@
 #include <commons/string.h>
 
 #include "tests/test_suite.h"
-#include "webProvider/webProvider.h"
+#include "src/webProvider/webProvider.h"
 
 t_log *logger;
 

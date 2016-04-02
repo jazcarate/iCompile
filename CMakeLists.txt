@@ -16,6 +16,11 @@ list(REMOVE_DUPLICATES Foo_INCLUDE_DIRS)
 include_directories(${Foo_INCLUDE_DIRS})
 
 
-set(SOURCE_FILES src/main.c src/tests/test_suite.c src/server/server.c src/webProvider/webProvider.c src/webProvider/webProvider.h src/tests/webProvider/webProvider.c)
+set(SOURCE_FILES main.c
+                    src/server/server.c
+                    src/webProvider/webProvider.c
+
+        tests/test_suite.c
+        tests/webProvider_test/webProvider_test.c)
 add_executable(iCompile ${SOURCE_FILES})
 target_link_libraries (iCompile commons)
