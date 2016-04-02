@@ -7,8 +7,9 @@
 
 int run_test_suite();
 
-#define FAIL() printf("\nFallo en %s() line %d\n", __func__, __LINE__)
-#define _assert(test) do { if (!(test)) { FAIL(); return 1; } } while(0)
-#define _verify(test) do { int r=test(); tests_corridos++; if(r) return r; } while(0)
+#define FAIL(testS) printf("\nFallo {%s} en %s() line %d\n", testS, __func__, __LINE__)
+#define PASS(testS) printf("\n %3d %s: Ok.", tests_corridos, testS)
+#define _assert(test) { if (!(test)) { FAIL(#test); return 1; } }
+#define _verify(test) { int r=test(); tests_corridos++; if(r) return r; PASS(#test); }
 
 #endif //ICOMPILE_TEST_SUITE_H

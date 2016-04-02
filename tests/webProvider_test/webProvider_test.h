@@ -5,6 +5,6 @@
 #include <commons/string.h>
 #include "../test_suite.h"
 
-int servirEstatico();
+int el_provider_estatico_devuelve_un_texto_estatico();
 
 #endif //ICOMPILE_WEBPROVIDER_H

@@ -11,7 +11,7 @@ int prueba_de_pruebas() {
 
 int todos_los_tests() {
     _verify(prueba_de_pruebas);
-    _verify(servirEstatico);
+    _verify(el_provider_estatico_devuelve_un_texto_estatico);
     return 0;
 }
 
@@ -21,8 +21,8 @@ int run_test_suite() {
 
     int result = todos_los_tests();
     if (result == 0)
-        printf("Ok\n");
-    printf("Tests corridos: %d\n", tests_corridos);
+        printf("\nOk");
+    printf("\nTests corridos: %d", tests_corridos);
 
     return result != 0;
 }

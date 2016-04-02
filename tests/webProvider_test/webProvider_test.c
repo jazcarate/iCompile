@@ -2,7 +2,7 @@
 
 #define UN_SOCKET 5531
 
-int servirEstatico() {
+int el_provider_estatico_devuelve_un_texto_estatico() {
     int argumentoSocket = 0;
     char *argumentoData = NULL;
     size_t argumentoSize = 0;
