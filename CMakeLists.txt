@@ -15,6 +15,11 @@ list(REMOVE_DUPLICATES Foo_INCLUDE_DIRS)
 
 include_directories(${Foo_INCLUDE_DIRS})
 
+file(GLOB HTML_FILES
+        "resources/*.html"
+        )
+file(COPY ${HTML_FILES} DESTINATION "resrources")
+
 
 set(SOURCE_FILES main.c
                     src/server/server.c

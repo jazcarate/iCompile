@@ -12,6 +12,7 @@ int prueba_de_pruebas() {
 int todos_los_tests() {
     _verify(prueba_de_pruebas);
     _verify(el_provider_estatico_devuelve_un_texto_estatico);
+    _verify(el_provider_de_paginas_devuelve_el_contenido_de_el_index_html);
     return 0;
 }
 

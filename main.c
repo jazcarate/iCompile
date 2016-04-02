@@ -12,7 +12,7 @@ int main(int argc, char **argv){
     logger = log_create("log.txt", "iCompile", true, LOG_LEVEL_TRACE);
     char *port = (argc > 2 && NULL != argv[2]) ? argv[2] : "3333";
 
-    serve(port, provideStaticContent);
+    serve(port, provideFileContent);
     return 0;
 }
 
