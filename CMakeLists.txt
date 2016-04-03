@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(iCompile)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Werror")
 
 file(GLOB_RECURSE Foo_SOURCES "src/*.cpp")
 file(GLOB_RECURSE Foo_HEADERS "src/*.h")
@@ -20,6 +20,7 @@ file(GLOB HTML_FILES
         )
 file(COPY ${HTML_FILES} DESTINATION "resrources")
 
+set(CMAKE_C_FLAGS_DEBUG "-DSINGLE_THREAD")
 
 set(SOURCE_FILES main.c
         src/server/server.c

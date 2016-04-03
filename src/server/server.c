@@ -1,5 +1,17 @@
 #include "server.h"
 
+#ifdef SINGLE_THREAD
+    #define FORKED_RUN(doer) doer
+#else
+    #define FORKED_RUN(doer) \
+        if (!fork()) {\
+            close(sockfd);\
+            doer;\
+            close(new_fd);\
+            exit(0);\
+        }
+#endif
+
 extern t_log *logger;
 
 void *get_in_addr(struct sockaddr *sa){
@@ -11,6 +23,11 @@ void *get_in_addr(struct sockaddr *sa){
 }
 
 void provide(int socket, void* data, size_t size){
+    log_trace(logger, "------------- Mandando[%3d] -------------", size);
+    log_trace(logger, "%*.s", size, data);
+    log_trace(logger, "------------- ------------- -------------");
+
+
     if (send(socket, data, size, 0) == -1)
         log_error(logger, "%s | %s", "send", strerror(errno));
 }
@@ -84,14 +101,10 @@ void serve(char *port, void(*run)(int, t_provider)){
                   s, sizeof s);
         log_trace(logger, "server: se conecto %s", s);
 
-        if (!fork()) { // this is the child process
-            close(sockfd); // child doesn't need the listener
+        FORKED_RUN(
+                run(new_fd, provide);
+        )
 
-            run(new_fd, provide);
-
-            close(new_fd);
-            exit(0);
-        }
         close(new_fd);  // parent doesn't need this
     }
 }
