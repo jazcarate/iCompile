@@ -2,6 +2,8 @@
 #define ICOMPILE_WEBPROVIDER_H
 
 #include "../server/server.h"
+#include "htmlHeaderParser.h"
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>

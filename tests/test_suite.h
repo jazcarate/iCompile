@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "webProvider_test/webProvider_test.h"
+#include "webProvider_test/htmlHeaderParser_test.h"
 
 int run_test_suite();
 

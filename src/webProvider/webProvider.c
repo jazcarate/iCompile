@@ -55,32 +55,20 @@ void provideFileContentAware(int socket, t_provider provider) {
         log_error(logger, "%s | %s", "File Provider: recv", strerror(errno));
     }
 
-    log_trace(logger, "------------- Obtenido -------------");
-    log_trace(logger, buf);
-    log_trace(logger, "------------- -------- -------------");
+    t_HTMLAction action = getHTMLAction(buf);
 
-    char** header = string_split(buf, " ");
-    if(string_starts_with(header[0], "GET")){
-        if( string_equals_ignore_case(header[1], "/" ) )
-                    header[1] = string_duplicate("/index.html");
-        log_trace(logger, "Tratando de acceder a: [%s]", header[1]+1);
-    } else {
-        exit(0);
+    if( action.method == HTMLMethod_GET ){
+        char *archivo = string_from_format("resrources%s", action.direction );
+        size_t tamanio = 0;
+        void *data = mapFile(archivo, &tamanio);
+
+        if(data == NULL){
+            data = "404, no se encontro";
+        }
+        log_trace(logger, "Enviando el archivo [%s]:%lu a %d", archivo, tamanio, socket);
+
+        provider(socket, data, tamanio);
     }
 
 
-
-    char *archivo = string_from_format("resrources%s", header[1]);
-    size_t tamanio = 0;
-    void *data = mapFile(archivo, &tamanio);
-
-    if(data == NULL){
-        data = "404, no se encontro";
-    }
-    log_trace(logger, "Enviando el archivo [%s]:%lu a %d", archivo, tamanio, socket);
-
-    log_debug(logger, data);
-
-
-    provider(socket, data, tamanio);
 }
