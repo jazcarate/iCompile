@@ -18,7 +18,7 @@ include_directories(${Foo_INCLUDE_DIRS})
 file(GLOB HTML_FILES
         "resources/*.html"
         )
-file(COPY ${HTML_FILES} DESTINATION "resrources")
+file(COPY ${HTML_FILES} DESTINATION "resources")
 
 set(CMAKE_C_FLAGS_DEBUG "-DSINGLE_THREAD")
 

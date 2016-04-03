@@ -58,7 +58,7 @@ void provideFileContentAware(int socket, t_provider provider) {
     t_HTMLAction action = getHTMLAction(buf);
 
     if( action.method == HTMLMethod_GET ){
-        char *archivo = string_from_format("resrources%s", action.direction );
+        char *archivo = string_from_format("resources%s", action.direction );
         size_t tamanio = 0;
         void *data = mapFile(archivo, &tamanio);
 
